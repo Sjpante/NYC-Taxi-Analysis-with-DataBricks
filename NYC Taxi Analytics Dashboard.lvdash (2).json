@@ -1,0 +1,1897 @@
+{
+  "datasets": [
+    {
+      "name": "nyc_sample",
+      "displayName": "NYC Sample Data",
+      "queryLines": [
+        "SELECT\n",
+        "  *\n",
+        "FROM\n",
+        "  workspace.default.nyc_sample"
+      ],
+      "catalog": "workspace",
+      "schema": "default"
+    },
+    {
+      "name": "nyc_clean",
+      "displayName": "NYC Clean Data",
+      "queryLines": [
+        "SELECT\n",
+        "  *\n",
+        "FROM\n",
+        "  workspace.default.nyc_clean"
+      ],
+      "catalog": "workspace",
+      "schema": "default"
+    },
+    {
+      "name": "f6ea23b1",
+      "displayName": "nyc_longest_trips",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.nyc_longest_trips",
+        "dimensions": [
+          {
+            "name": "pickup_longitude",
+            "expr": "source.pickup_longitude",
+            "displayName": "Pickup Longitude"
+          },
+          {
+            "name": "pickup_latitude",
+            "expr": "source.pickup_latitude",
+            "displayName": "Pickup Latitude"
+          },
+          {
+            "name": "trip_duration",
+            "expr": "source.trip_duration",
+            "displayName": "Trip Duration"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "00dde31b",
+      "displayName": "nyc_most_trips_location",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.nyc_most_trips_location",
+        "dimensions": [
+          {
+            "name": "pickup_longitude",
+            "expr": "source.pickup_longitude",
+            "displayName": "Pickup Longitude"
+          },
+          {
+            "name": "pickup_latitude",
+            "expr": "source.pickup_latitude",
+            "displayName": "Pickup Latitude"
+          },
+          {
+            "name": "id",
+            "expr": "source.id",
+            "displayName": "Id"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "e8af2d59",
+      "displayName": "nyc_shortest_trips",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.nyc_shortest_trips",
+        "dimensions": [
+          {
+            "name": "pickup_longitude",
+            "expr": "source.pickup_longitude",
+            "displayName": "Pickup Longitude"
+          },
+          {
+            "name": "pickup_latitude",
+            "expr": "source.pickup_latitude",
+            "displayName": "Pickup Latitude"
+          },
+          {
+            "name": "trip_duration",
+            "expr": "source.trip_duration",
+            "displayName": "Trip Duration"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "4edea484",
+      "displayName": "Page 1",
+      "layout": [
+        {
+          "widget": {
+            "name": "trips_per_hour",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_hour",
+                      "expression": "`pickup_hour`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Trips per Hour",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "pickup_hour",
+                  "axis": {
+                    "labelAngle": 0,
+                    "title": "Hour"
+                  },
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "natural-order"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "axis": {
+                    "labelAngle": 0,
+                    "title": "Trips"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 4,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "daily_trips",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_day",
+                      "expression": "`pickup_day`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Daily Trips",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "pickup_day",
+                  "displayName": "Day",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "custom-order",
+                      "orderedValues": [
+                        "Mon",
+                        "Tue",
+                        "Wed",
+                        "Thu",
+                        "Fri",
+                        "Sat",
+                        "Sun"
+                      ]
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "axis": {
+                    "title": "Trips"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 6,
+            "width": 4,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "passenger_distribution",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "passenger_count",
+                      "expression": "`passenger_count`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Passenger Distribution",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "passenger_count",
+                  "axis": {
+                    "title": "Passengers",
+                    "hideLabels": false
+                  },
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "axis": {
+                    "title": "Trips"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 6,
+            "width": 4,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "scatter_duration",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_sample",
+                  "fields": [
+                    {
+                      "name": "passenger_count",
+                      "expression": "`passenger_count`"
+                    },
+                    {
+                      "name": "passenger_jitter",
+                      "expression": "`passenger_jitter`"
+                    },
+                    {
+                      "name": "trip_duration",
+                      "expression": "`trip_duration`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Passenger Count vs Trip Duration",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ],
+                "opacity": 0.6,
+                "shape": "circle"
+              },
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "passenger_jitter",
+                  "axis": {
+                    "hideLabels": true,
+                    "hideGrid": false
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "all"
+                    },
+                    "significantFigures": {
+                      "type": "all"
+                    }
+                  },
+                  "displayName": "Passengers",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "trip_duration",
+                  "displayName": "Trip Duration",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "passenger_count"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FFFF4D"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 23,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "pickup_map",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_sample",
+                  "fields": [
+                    {
+                      "name": "passenger_count",
+                      "expression": "`passenger_count`"
+                    },
+                    {
+                      "name": "pickup_latitude",
+                      "expression": "`pickup_latitude`"
+                    },
+                    {
+                      "name": "pickup_longitude",
+                      "expression": "`pickup_longitude`"
+                    },
+                    {
+                      "name": "pickup_datetime",
+                      "expression": "`pickup_datetime`"
+                    },
+                    {
+                      "name": "trip_duration",
+                      "expression": "`trip_duration`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Pickup Location Heatmap",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  }
+                ],
+                "size": -2.2
+              },
+              "widgetType": "symbol-map",
+              "encodings": {
+                "coordinates": {
+                  "coordinateType": "longitude-latitude",
+                  "latitude": {
+                    "fieldName": "pickup_latitude"
+                  },
+                  "longitude": {
+                    "fieldName": "pickup_longitude"
+                  }
+                },
+                "color": {
+                  "fieldName": "passenger_count",
+                  "displayName": "Passenger Count",
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "reds"
+                    }
+                  }
+                },
+                "size": {
+                  "fieldName": "trip_duration",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "pickup_datetime"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FFFF4D"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 28,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "dropoff_map",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_sample",
+                  "fields": [
+                    {
+                      "name": "passenger_count",
+                      "expression": "`passenger_count`"
+                    },
+                    {
+                      "name": "dropoff_latitude",
+                      "expression": "`dropoff_latitude`"
+                    },
+                    {
+                      "name": "dropoff_longitude",
+                      "expression": "`dropoff_longitude`"
+                    },
+                    {
+                      "name": "dropoff_datetime",
+                      "expression": "`dropoff_datetime`"
+                    },
+                    {
+                      "name": "trip_duration",
+                      "expression": "`trip_duration`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Dropoff Location Heatmap",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  }
+                ],
+                "opacity": 0.7,
+                "size": -2.1
+              },
+              "widgetType": "symbol-map",
+              "encodings": {
+                "coordinates": {
+                  "latitude": {
+                    "fieldName": "dropoff_latitude"
+                  },
+                  "longitude": {
+                    "fieldName": "dropoff_longitude"
+                  }
+                },
+                "color": {
+                  "fieldName": "passenger_count",
+                  "displayName": "Passenger Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "size": {
+                  "fieldName": "trip_duration",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "dropoff_datetime"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FFFF4D"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 28,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "peak_hours_v2",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_hour",
+                      "expression": "`pickup_hour`"
+                    },
+                    {
+                      "name": "countdistinct(id)",
+                      "expression": "COUNT(DISTINCT `id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Peak Hours Analysis",
+                "showTitle": true
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  }
+                ],
+                "opacity": 1,
+                "size": 2
+              },
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "countdistinct(id)",
+                  "axis": {
+                    "labelAngle": 0,
+                    "title": "Trips",
+                    "hideGrid": true
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    },
+                    "hideGroupSeparator": false
+                  },
+                  "formatTemplate": "{{ @formatted }}",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "pickup_hour",
+                  "axis": {
+                    "title": "Hour",
+                    "hideGrid": false,
+                    "hideLabels": false
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    },
+                    "significantFigures": {
+                      "type": "max",
+                      "figures": 3
+                    }
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "pickup_hour",
+                  "legend": {
+                    "hide": true
+                  },
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "custom-diverging",
+                      "colors": {
+                        "start": "#FF0000",
+                        "mid": "#9B9340",
+                        "end": "#FFFFFF"
+                      }
+                    },
+                    "reverse": true
+                  }
+                }
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 13,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "ac2ba1f6",
+            "queries": [
+              {
+                "name": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_pickup_datetime",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_datetime",
+                      "expression": "`pickup_datetime`"
+                    },
+                    {
+                      "name": "pickup_datetime_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Pickup date range"
+              },
+              "style": {
+                "fontColor": {
+                  "dark": "#FFFFFF"
+                }
+              },
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "pickup_datetime",
+                    "queryName": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_pickup_datetime"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#493555"
+              },
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 8,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "fbbdfe8e",
+            "queries": [
+              {
+                "name": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_passenger_count",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "passenger_count",
+                      "expression": "`passenger_count`"
+                    },
+                    {
+                      "name": "passenger_count_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Passenger count"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "passenger_count",
+                    "queryName": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_passenger_count"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#493555"
+              },
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 4,
+            "width": 4,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "c682ecb3",
+            "queries": [
+              {
+                "name": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_trip_duration",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "min(trip_duration)",
+                      "expression": "MIN(`trip_duration`)"
+                    },
+                    {
+                      "name": "max(trip_duration)",
+                      "expression": "MAX(`trip_duration`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Trip duration (seconds)"
+              },
+              "widgetType": "range-slider",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "trip_duration",
+                    "queryName": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_trip_duration"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#493555"
+              },
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 5,
+            "width": 8,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "dbaa5811",
+            "queries": [
+              {
+                "name": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c5f6717c3ab19410b397f7b69_passenger_count",
+                "query": {
+                  "datasetName": "nyc_sample",
+                  "fields": [
+                    {
+                      "name": "min(passenger_count)",
+                      "expression": "MIN(`passenger_count`)"
+                    },
+                    {
+                      "name": "max(passenger_count)",
+                      "expression": "MAX(`passenger_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Passenger count"
+              },
+              "widgetType": "range-slider",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "passenger_count",
+                    "queryName": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c5f6717c3ab19410b397f7b69_passenger_count"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#493555"
+              },
+              "widgetBorderColor": {
+                "dark": "#FFFF4D"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 22,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "da3afd50",
+            "queries": [
+              {
+                "name": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_pickup_hour",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_hour",
+                      "expression": "`pickup_hour`"
+                    },
+                    {
+                      "name": "pickup_hour_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Hour of day"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "pickup_hour",
+                    "queryName": "dashboards/01f1593b91041941a85ee616a51d7495/datasets/01f1593c61c91c63aa195f06f44c5970_pickup_hour"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#493555"
+              },
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 4,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "77e2aba1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "countdistinct(pickup_day)",
+                      "expression": "COUNT(DISTINCT `pickup_day`)"
+                    },
+                    {
+                      "name": "weekend",
+                      "expression": "`weekend`"
+                    },
+                    {
+                      "name": "countdistinct(id)",
+                      "expression": "COUNT(DISTINCT `id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "countdistinct(pickup_day)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "title": "Weekday VS Weekend"
+                  }
+                },
+                "color": {
+                  "fieldName": "weekend",
+                  "legend": {
+                    "hide": false,
+                    "hideTitle": true
+                  },
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "Weekday",
+                        "color": {
+                          "themeColorType": "visualizationColors",
+                          "position": 3
+                        }
+                      },
+                      {
+                        "value": "Weekend",
+                        "color": {
+                          "themeColorType": "visualizationColors",
+                          "position": 2
+                        }
+                      }
+                    ]
+                  }
+                },
+                "label": {
+                  "show": true
+                },
+                "extra": [
+                  {
+                    "fieldName": "countdistinct(id)"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 6,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "a744",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_hour",
+                      "expression": "`pickup_hour`"
+                    },
+                    {
+                      "name": "avg(trip_duration)",
+                      "expression": "AVG(`trip_duration`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Average Trip Duration per Hour"
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "pickup_hour",
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 0
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "useForSearch": false,
+                    "displayName": "Pick up Hour",
+                    "formatTemplate": "{{ @formatted }}",
+                    "style": {
+                      "type": "basic",
+                      "rules": [
+                        {
+                          "condition": {
+                            "operator": ">="
+                          },
+                          "backgroundColor": "#00A972"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "avg(trip_duration)",
+                    "contentAlignment": "center",
+                    "displayName": "Average Trip Duration"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FF5F1F"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 36,
+            "width": 3,
+            "height": 14
+          }
+        },
+        {
+          "widget": {
+            "name": "kuytrlkuy",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "nyc_clean",
+                  "fields": [
+                    {
+                      "name": "pickup_day",
+                      "expression": "`pickup_day`"
+                    },
+                    {
+                      "name": "avg(trip_duration)",
+                      "expression": "AVG(`trip_duration`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Average Trip Duration per Day"
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "pickup_day",
+                    "contentAlignment": "center",
+                    "useForSearch": false,
+                    "displayName": "Pick up Day",
+                    "formatTemplate": "{{ @formatted }}"
+                  },
+                  {
+                    "fieldName": "avg(trip_duration)",
+                    "contentAlignment": "center",
+                    "displayName": "Average Trip Duration"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FF5F1F"
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 36,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "16b9c884",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "00dde31b",
+                  "fields": [
+                    {
+                      "name": "pickup_longitude",
+                      "expression": "`pickup_longitude`"
+                    },
+                    {
+                      "name": "pickup_latitude",
+                      "expression": "`pickup_latitude`"
+                    },
+                    {
+                      "name": "id",
+                      "expression": "`id`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Top 5 Pickup Locations",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "pickup_longitude",
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 6
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "displayName": "Pick Up Longtitude"
+                  },
+                  {
+                    "fieldName": "pickup_latitude",
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 6
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "displayName": "Pick up Latitude"
+                  },
+                  {
+                    "fieldName": "id",
+                    "contentAlignment": "center",
+                    "displayName": "Number of Trips"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FF5F1F"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 36,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "logest",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f6ea23b1",
+                  "fields": [
+                    {
+                      "name": "pickup_longitude",
+                      "expression": "`pickup_longitude`"
+                    },
+                    {
+                      "name": "pickup_latitude",
+                      "expression": "`pickup_latitude`"
+                    },
+                    {
+                      "name": "trip_duration",
+                      "expression": "`trip_duration`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Longest Trips by Location"
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "pickup_longitude",
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 6
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "useForSearch": false,
+                    "displayName": "Pick up Longtitude",
+                    "formatTemplate": "{{ @formatted }}",
+                    "style": {
+                      "type": "basic",
+                      "rules": [
+                        {
+                          "condition": {
+                            "operator": ">="
+                          },
+                          "backgroundColor": "#00A972"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "fieldName": "pickup_latitude",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 6
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "contentAlignment": "center",
+                    "displayName": "Pick Up Latitude"
+                  },
+                  {
+                    "fieldName": "trip_duration",
+                    "contentAlignment": "center",
+                    "displayName": "Trip Duration"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FF5F1F"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 44,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "90d6dd11",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e8af2d59",
+                  "fields": [
+                    {
+                      "name": "pickup_longitude",
+                      "expression": "`pickup_longitude`"
+                    },
+                    {
+                      "name": "pickup_latitude",
+                      "expression": "`pickup_latitude`"
+                    },
+                    {
+                      "name": "trip_duration",
+                      "expression": "`trip_duration`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Shortest Trips by Location",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "pickup_longitude",
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 6
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "displayName": "Pick Up Longtitude"
+                  },
+                  {
+                    "fieldName": "pickup_latitude",
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 6
+                      },
+                      "hideGroupSeparator": true
+                    },
+                    "displayName": "Pick Up Latitude"
+                  },
+                  {
+                    "fieldName": "trip_duration",
+                    "contentAlignment": "center",
+                    "displayName": "Number of Trips"
+                  }
+                ]
+              }
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#FF5F1F"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 40,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "9f70fe90",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## <span style=\"text-align:center;display:block\"><span style=\"font-family:Georgia;color:#1B1833\">Trip Distribution</span><span style=\"font-family:Georgia;color:#077A9D\"> </span></span>"
+              ],
+              "verticalAlign": "VERTICAL_ALIGN_CENTER"
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#8F8D9C"
+              },
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "7a743dce",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## <span style=\"text-align:center;display:block\"><span style=\"font-family:Georgia;color:#1B1833\">Passenger Count vs Trip Duration Scatterplot & Geospatial Analysis</span></span>"
+              ],
+              "verticalAlign": "VERTICAL_ALIGN_CENTER"
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#8F8D9C"
+              },
+              "widgetBorderColor": {
+                "dark": "#FFFF4D"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 20,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "354b0daa",
+            "multilineTextboxSpec": {
+              "lines": [
+                "### <span style=\"text-align:center;display:block\"><span style=\"font-family:Georgia;color:#B8B5C7\">Daily & Hourly Traffic Pattern Analysis</span></span>"
+              ],
+              "verticalAlign": "VERTICAL_ALIGN_CENTER"
+            },
+            "specExtensions": {
+              "widgetBorderColor": {
+                "dark": "#00FFF7"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "cd97741a",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## <span style=\"text-align:center;display:block\"><span style=\"font-family:Georgia;color:#1B1833\">Data Tables</span></span>"
+              ],
+              "verticalAlign": "VERTICAL_ALIGN_CENTER"
+            },
+            "specExtensions": {
+              "widgetBackgroundColor": {
+                "dark": "#8F8D9C"
+              },
+              "widgetBorderColor": {
+                "dark": "#FF5F1F"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 34,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "d2c3bfbd",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# <span style=\"text-align:center;display:block\"><span style=\"font-family: Georgia;\">NYC Taxi Trip Analysis</span></span>"
+              ],
+              "verticalAlign": "VERTICAL_ALIGN_CENTER"
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "global_filters",
+      "displayName": "Global Filters",
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "a3f77f17",
+      "displayName": "Untitled page",
+      "pageType": "PAGE_TYPE_CANVAS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#1F1B2E",
+        "dark": "#0C0B1D"
+      },
+      "widgetBackgroundColor": {
+        "light": "#2A2442",
+        "dark": "#1B1833"
+      },
+      "widgetBorderColor": {
+        "light": "#5E5A80",
+        "dark": "#8F8D9C"
+      },
+      "fontColor": {
+        "light": "#FDFDFD",
+        "dark": "#F5F5F5"
+      },
+      "selectionColor": {
+        "light": "#FF6EC7",
+        "dark": "#FF6EC7"
+      },
+      "visualizationColors": [
+        "#FF6EC7",
+        "#00FFF7",
+        "#BF00FF",
+        "#FF5F1F",
+        "#FFFF4D",
+        "#D9007F",
+        "#007FFF"
+      ],
+      "widgetHeaderAlignment": "CENTER"
+    },
+    "applyModeEnabled": false
+  }
+}
