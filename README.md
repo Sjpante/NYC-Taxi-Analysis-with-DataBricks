@@ -20,7 +20,7 @@ The project culminates in an enterprise-grade interactive dashboard deployed via
 * **Environment:** Databricks Community Edition (Lakehouse Platform)
 * **Libraries:** Pandas, NumPy, Plotly Express
 * **Techniques Demonstrated:**
-  * **Big Data Cleaning & Schema Integrity:** Implementing coordinate filtering grids (Latitude -90 to 90; Longitude -180 to 180) and removing logical outliers like negative durations or zero passenger rides.
+  * **Big Data Cleaning & Schema Integrity:** Implementing coordinate filtering grids and removing logical outliers from 1.5M entries.
   * **Feature Engineering:** Programmatically extracting datetime components (Hours, Days of Week, Weekday/Weekend classification flags) from raw timestamp records.
   * **Lakehouse Table Ingestion:** Transforming processed Pandas structures into PySpark DataFrames to perform production-ready table overwrites (`overwriteSchema=True`) into the **Databricks Unity Catalog**.
   * **Interactive Visualization & Jittering:** Using advanced Plotly visualizations, including custom text overlays, marker styling, and manual uniform data-jittering to reveal patterns in dense categorical fields.
