@@ -36,11 +36,11 @@ The project culminates in an enterprise-grade interactive dashboard deployed via
 
 ## 📂 Repository Structure
 
-* [NYC Taxi Analytics.ipynb](NYC Taxi Analytics.ipynb): The core engineering notebook containing the full source code for data ingestion, cleaning, transformation logic, and Plotly visualizations.
-* [NYC Taxi Analytics.py](NYC Taxi Analytics.py): The refactored production script version structured for modular deployment and automated scheduling workflows within Databricks.
-* [NYC Taxi Analytics HTML.html (Interactive Preview)](NYC Taxi Analytics%20HTML.html): A fully rendered HTML asset that preserves and displays all interactive Plotly plots directly in your web browser.
-* [NYC Taxi Analytics Dashboard.lvdash (2).json](NYC Taxi Analytics%20Dashboard.lvdash%20(2).json): The native Databricks Lakeview Dashboard blueprint configuration detailing query links, global filters, and UI configurations.
-* [NYC Taxi Analytics Dashboard HTML.pdf](NYC Taxi Analytics%20Dashboard%20HTML.pdf): An executive visual summary showing the final layout, heatmaps, and performance charts of the analytics dashboard.
+* [NYC Taxi Analytics.ipynb](NYC%20Taxi%20Analytics.ipynb): The core engineering notebook containing the full source code for data ingestion, cleaning, transformation logic, and Plotly visualizations.
+* [NYC Taxi Analytics.py](NYC%20Taxi%20Analytics.py): The refactored production script version structured for modular deployment and automated scheduling workflows within Databricks.
+* [NYC Taxi Analytics HTML.html (Interactive Preview)](NYC%20Taxi%20Analytics%20HTML.html): A fully rendered HTML asset that preserves and displays all interactive Plotly plots directly in your web browser.
+* [NYC Taxi Analytics Dashboard.lvdash (2).json](NYC%20Taxi%20Analytics%20Dashboard.lvdash%20(2).json): The native Databricks Lakeview Dashboard blueprint configuration detailing query links, global filters, and UI configurations.
+* [NYC Taxi Analytics Dashboard HTML.pdf](NYC%20Taxi%20Analytics%20Dashboard%20HTML.pdf): An executive visual summary showing the final layout, heatmaps, and performance charts of the analytics dashboard.
 
 ---
 
